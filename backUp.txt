@@ -1,0 +1,39 @@
+        const rts = await newLocation.insertLocation()
+
+        console.log(rts)
+        if(rts.status === 'fail'){
+            console.log('entra error')
+            throw rts
+        }else{
+            const [newLocations] = await ls.getAllLocations()
+
+            res.status(200).json({succes: true,data: newLocations})
+        }
+
+        
+    } catch (error) {
+        console.log(error)
+        if(error.errorType === 'dataToLong'){
+            const [newLocations] = await ls.getAllLocations()
+
+            res.status(200).json({succes: false, data: newLocations, errorMessage: error.message})
+        }else{
+            console.log(error)
+        }        
+    }
+
+    Bakcup del metodo en location.js: 
+    try {
+            await con.query(query)
+            return {status: "succes"}
+        } catch (error) {
+            if(error.code === 'ER_DATA_TOO_LONG'){
+                const msn = createMessageError(error.message)
+                return  {
+                            status: "fail",
+                            errorType: "dataToLong",
+                            message: msn,
+                        }
+            }
+            console.log(error)            
+        } 
