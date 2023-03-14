@@ -1,4 +1,4 @@
-const con = require('../db/Conection')
+const con = require('../db/Connection')
 
 class Location {
     constructor(loc) {
