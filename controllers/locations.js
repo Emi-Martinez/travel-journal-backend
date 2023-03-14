@@ -1,5 +1,6 @@
 const location = require('../models/Location')
 const {uploadImage} = require('../util/uploadImage')
+const {deleteImage} = require('../util/deleteImage')
 
 const getLocations = async (req,res)=>{
     try {
@@ -71,7 +72,10 @@ const updateLocation = async (req,res)=>{
 const deleteLocation = async (req,res)=>{
 
     const {id,email} = req.params
-
+    const [loc] = await location.getLocationByID(id)
+    const {imageURL} = loc[0]
+    
+    await deleteImage(imageURL)
     await location.dltLocation(id)
 
     const [newLocations] = await location.getAllLocations(email)
