@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001
 const app = express()
 
 //Sirviendo carpeta con imagenes
-app.use(express.static('./Images'));
+app.use(express.static('./images'));
 
 //Middleware
 app.use(fileUpload())
