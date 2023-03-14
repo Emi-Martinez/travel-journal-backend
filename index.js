@@ -3,7 +3,7 @@ const {route} = require('./routes/locations')
 const fileUpload = require('express-fileupload')
 const PORT = process.env.PORT || 3001
 
-console.log(__dirname)
+console.log(__filename)
 
 
 const app = express()
