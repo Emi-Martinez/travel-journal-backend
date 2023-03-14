@@ -1,6 +1,8 @@
 async function uploadImage(img){
-    const dir = __dirname.slice(0,__dirname.length-5)
+    const dir = __dirname
     let uploadPath = `${dir}\\images\\${img.name}`
+
+    console.log(dir)
 
     try {
         await img.mv(uploadPath)
