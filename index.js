@@ -2,7 +2,9 @@ const express = require('express')
 const {route} = require('./routes/locations')
 const fileUpload = require('express-fileupload')
 const PORT = process.env.PORT || 3001
+const dir = __dirname.slice(0,__dirname.length-5)
 
+console.log(dir)
 console.log(__filename)
 
 
