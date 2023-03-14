@@ -1,4 +1,4 @@
-const {unlink} = require('node:fs/promises')
+const {unlink} = require('fs').promises
 
 async function deleteImage(imgURL){
     const dir = __dirname.slice(0, __dirname.length-5)
