@@ -1,9 +1,16 @@
 const express = require('express')
+const cors = require('cors')
 const {route} = require('./routes/locations')
 const fileUpload = require('express-fileupload')
 const PORT = process.env.PORT || 3001
 
 const app = express()
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials :  true
+}
+
+app.use(cors(corsOptions))
 
 //Sirviendo carpeta con imagenes
 app.use(express.static('./images'));
